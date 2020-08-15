@@ -18,6 +18,7 @@ import (
 	"github.com/mat007/go-msi/wix"
 	"github.com/mh-cbon/stringexec"
 	"github.com/urfave/cli"
+	"golang.org/x/tools/go/packages"
 )
 
 // Version holds the program version.
@@ -29,6 +30,28 @@ var TPLPATH = "" // non-windows build, use ldflags to tell about that.
 
 // Main exposes the application entry point.
 func Main() {
+	sourceTemplatesDir := func() string {
+		meta, _ := packages.Load(
+			&packages.Config{Mode: packages.LoadFiles},
+			"github.com/mat007/go-msi",
+		)
+		if len(meta) == 0 {
+			return ""
+		}
+		if len(meta[0].GoFiles) == 0 {
+			return ""
+		}
+		base := filepath.Dir(meta[0].GoFiles[0])
+		if _, err := os.Stat(filepath.Join(base, "templates")); err != nil {
+			return ""
+		}
+
+		return base
+	}
+
+	if TPLPATH == "" {
+		TPLPATH = sourceTemplatesDir()
+	}
 
 	if TPLPATH == "" { // built for windows
 		b, err := util.GetBinPath()
