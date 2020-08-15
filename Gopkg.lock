@@ -56,6 +56,14 @@
   version = "v1.20.0"
 
 [[projects]]
+  digest = "1:2199118a5de91125b472c6a71ecd81b636d7ce252f64087e57f1ba5830f1451a"
+  name = "golang.org/x/mod"
+  packages = ["semver"]
+  pruneopts = "UT"
+  revision = "859b3ef565e237f9f1a0fb6b55385c497545680d"
+  version = "v0.3.0"
+
+[[projects]]
   digest = "1:f88704625b5c1491c3579e6dc2f851aa961c2cb2ef5e1a272de6fd831bfb5ff4"
   name = "golang.org/x/sys"
   packages = [
@@ -86,6 +94,39 @@
   pruneopts = "UT"
   revision = "6e3c4e7365ddcc329f090f96e4348398f6310088"
 
+[[projects]]
+  branch = "master"
+  digest = "1:f118c864c92d8867916ed3278aaec479a0a468e7c047f531cccadf4f21368ddb"
+  name = "golang.org/x/tools"
+  packages = [
+    "go/ast/astutil",
+    "go/gcexportdata",
+    "go/internal/gcimporter",
+    "go/internal/packagesdriver",
+    "go/packages",
+    "go/types/typeutil",
+    "internal/event",
+    "internal/event/core",
+    "internal/event/keys",
+    "internal/event/label",
+    "internal/gocommand",
+    "internal/packagesinternal",
+    "internal/typesinternal",
+  ]
+  pruneopts = "UT"
+  revision = "6fbe43b70d4c56895a8c82c66820be1b62182760"
+
+[[projects]]
+  branch = "master"
+  digest = "1:918a46e4a2fb83df33f668f5a6bd51b2996775d073fce1800d3ec01b0a5ddd2b"
+  name = "golang.org/x/xerrors"
+  packages = [
+    ".",
+    "internal",
+  ]
+  pruneopts = "UT"
+  revision = "5ec99f83aff198f5fbd629d6c8d8eb38a04218ca"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
@@ -102,6 +143,7 @@
     "golang.org/x/text/encoding/unicode",
     "golang.org/x/text/runes",
     "golang.org/x/text/transform",
+    "golang.org/x/tools/go/packages",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1
